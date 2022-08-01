@@ -21,13 +21,11 @@ public class Worker01 {
         Channel channel = RabbitMqUtils.getChannel();
 
 //        消息的接收
-        DeliverCallback deliverCallback = (var1,var2) ->{
-            System.out.println("接受到的消息："+new String(var2.getBody()));
-        };
+        DeliverCallback deliverCallback = (var1,var2) -> System.out.println("接受到的消息："+new String(var2.getBody()));
 //        消息接收被取消时，会执行下面的内容
-        CancelCallback cancelCallback = var1 -> {
-            System.out.println(var1 + "消费者取消消费接口回调逻辑");
-        };
+        CancelCallback cancelCallback = var1 -> System.out.println(var1 + "消费者取消消费接口回调逻辑");
+
+        System.out.println("C2等待接收消息...");
         channel.basicConsume(QUEUE_NAME,true,deliverCallback,cancelCallback);
     }
 }

@@ -29,6 +29,8 @@ public class Consumer {
 
 //        处理推送过来消息的回调函数
         DeliverCallback deliverCallback = (var1,var2) -> {
+
+
             System.out.println(new String(var2.getBody()));
         };
 //        取消消息时的回调
